@@ -1,0 +1,40 @@
+name: Not a real CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - "*"
+
+permissions:
+  contents: read # for checkout
+
+jobs:
+  semantic-release:
+    name: Semantic Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Run Dagger for determine-environment testing
+        uses: dagger/dagger-for-github@8.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          module: github.com/BCIT-LTC/daggerverse/determine-environment
+          cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
+          call: test # add arguments as needed
+          version: "latest"
+
+
+      - name: Run Dagger for semantic-release development testing
+        uses: dagger/dagger-for-github@8.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          module: github.com/BCIT-LTC/daggerverse/semantic-release
+          call: test # add arguments as needed
+          cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
+          version: "latest"
+
+
