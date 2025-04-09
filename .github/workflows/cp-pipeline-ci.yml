@@ -26,5 +26,3 @@ jobs:
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
           version: "latest"
         continue-on-error: true
-        
-      
