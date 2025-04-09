@@ -9,27 +9,12 @@ permissions:
   contents: read # for checkout
 
 jobs:
-  determine-environment:
-    name: Determine Environment
+  semantic-release:
+    name: Semantic Release
     runs-on: ubuntu-latest
-    outputs:
-      environment: ${{ steps.set-environment.outputs.ENVIRONMENT }}
     steps:
-      - uses: actions/checkout@v4
-      - name: Get commit message
-        id: get-commit-message
-        run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B | tr -d '\n' | sed 's/"/\\"/g')" >> $GITHUB_ENV
-
-      # get env_map.json to string
-      - name: Get env_map.json
-        id: get-env-map
-        run: |
-          if [ -f env_map.json ]; then
-            ENV_MAP=$(cat env_map.json | tr -d '\n' | sed 's/"/\\"/g')
-            echo "ENV_MAP=$ENV_MAP" >> $GITHUB_ENV
-          else
-            echo "env_map.json not found"
-          fi
+      - name: Checkout code
+        uses: actions/checkout@v4
       
       - name: Run Dagger for determine-environment testing
         uses: dagger/dagger-for-github@8.0.0
@@ -38,5 +23,5 @@ jobs:
         with:
           module: github.com/BCIT-LTC/daggerverse/determine-environment
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
-          call: getenv --commitmessage="${{ env.COMMIT_MESSAGE }}" --branch="${{ github.ref_name }}" --mapstring="${{ env.ENV_MAP }}"
+          call: getenv --source=.
           version: "latest"
