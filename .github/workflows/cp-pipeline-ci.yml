@@ -15,17 +15,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
-      - name: Run Dagger for determine-environment testing
-        uses: dagger/dagger-for-github@8.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          module: github.com/BCIT-LTC/daggerverse/determine-environment
-          cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
-          call: getenv
-          version: "latest"
-        continue-on-error: true
 
       - name: Run Dagger for semantic-release development testing
         uses: dagger/dagger-for-github@8.0.0
