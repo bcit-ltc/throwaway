@@ -23,6 +23,7 @@ jobs:
         with:
           module: github.com/BCIT-LTC/daggerverse/semantic-release
           call: test # add arguments as needed
+          args: --username ${{ github.actor }}
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
           version: "latest"
         continue-on-error: true
