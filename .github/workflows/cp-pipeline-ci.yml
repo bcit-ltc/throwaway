@@ -25,6 +25,5 @@ jobs:
           call: test --branch ${{ github.ref_name}} --username ${{ github.actor }} --github_token env://GITHUB_TOKEN --source ./ # add arguments as needed
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
           version: "latest"
-        continue-on-error: true
 
-        
+
