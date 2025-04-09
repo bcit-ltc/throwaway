@@ -1,0 +1,13 @@
+{
+    "branches": {
+        "main": {
+            "prefixes": {
+                "fix:": "stable",
+                "feat:": "stable",
+                "major": "stable"
+            },
+            "default": "latest"
+        }
+    },
+    "default": "review"
+}
