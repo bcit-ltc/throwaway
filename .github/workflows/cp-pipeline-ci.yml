@@ -25,15 +25,3 @@ jobs:
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
           call: getenv
           version: "latest"
-        continue-on-error: true
-
-      - name: Run Dagger for semantic-release development testing
-        uses: dagger/dagger-for-github@8.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          module: github.com/BCIT-LTC/daggerverse/semantic-release
-          call: test # add arguments as needed
-          cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
-          version: "latest"
-        continue-on-error: true
