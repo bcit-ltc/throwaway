@@ -23,7 +23,7 @@ jobs:
         with:
           module: github.com/BCIT-LTC/daggerverse/determine-environment
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
-          call: test # add arguments as needed
+          call: determine_environment # add arguments as needed
           version: "latest"
 
 
@@ -36,5 +36,3 @@ jobs:
           call: test # add arguments as needed
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
           version: "latest"
-
-
