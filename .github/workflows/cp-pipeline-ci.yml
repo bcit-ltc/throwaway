@@ -23,5 +23,5 @@ jobs:
         with:
           module: github.com/BCIT-LTC/daggerverse/determine-environment
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
-          call: getenv
+          call: test
           version: "latest"
