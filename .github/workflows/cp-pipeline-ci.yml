@@ -15,7 +15,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+      - name: Print all ENVS
+        run: printenv
       - name: Run Dagger for semantic-release development testing
         uses: dagger/dagger-for-github@8.0.0
         env:
