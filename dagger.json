@@ -1,0 +1,8 @@
+{
+  "name": "throwaway",
+  "engineVersion": "v0.18.1",
+  "sdk": {
+    "source": "python"
+  },
+  "source": ".dagger"
+}
