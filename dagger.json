@@ -4,5 +4,12 @@
   "sdk": {
     "source": "python"
   },
+  "dependencies": [
+    {
+      "name": "semantic-release",
+      "source": "github.com/BCIT-LTC/daggerverse/semantic-release",
+      "pin": "e5b80437c5d34ee53008fcc47bc11d6968c1d4b5"
+    }
+  ],
   "source": ".dagger"
 }
