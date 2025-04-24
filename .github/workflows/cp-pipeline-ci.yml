@@ -27,8 +27,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          module: github.com/BCIT-LTC/daggerverse/semantic-release
-          call: semanticrelease --username ${{ github.actor }} --github_token env://GITHUB_TOKEN --source ./ # add arguments as needed
+          # module: github.com/BCIT-LTC/daggerverse/semantic-release
+          module: github.com/BCIT-LTC/daggerverse/tree/6-pipeline-manager-module/pipeline-manager
+          # call: semanticrelease --username ${{ github.actor }} --github_token env://GITHUB_TOKEN --source ./ # add arguments as needed
+          call: run
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
           version: "latest"
           
