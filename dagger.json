@@ -9,11 +9,6 @@
       "name": "pipeline-manager",
       "source": "github.com/BCIT-LTC/daggerverse/pipeline-manager",
       "pin": "68f4fa790a8f34a173b2867af3b6840f29606843"
-    },
-    {
-      "name": "semantic-release",
-      "source": "github.com/BCIT-LTC/daggerverse/semantic-release",
-      "pin": "e5b80437c5d34ee53008fcc47bc11d6968c1d4b5"
     }
   ],
   "source": ".dagger"
