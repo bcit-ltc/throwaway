@@ -8,7 +8,7 @@
     {
       "name": "pipeline-manager",
       "source": "github.com/BCIT-LTC/daggerverse/pipeline-manager",
-      "pin": "68f4fa790a8f34a173b2867af3b6840f29606843"
+      "pin": "4fc1b3bc804edd5573648d9c67b9620d732d2582"
     }
   ],
   "source": ".dagger"
