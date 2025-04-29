@@ -14,7 +14,7 @@ class Throwaway: # this will be our pipeline-manager module
                 commit_hash: Annotated[str, Doc("Current Commit Hash")] | None,  # Current commit hash
                 ) -> str:
 
-        print(dir(dag))
+        print(dir(dag.pipeline_manager()))
 
         
         return await dag.pipeline_manager().run(
