@@ -26,9 +26,10 @@ jobs:
         uses: dagger/dagger-for-github@8.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REGISTRY_PATH: "ghcr.io/${{ github.event.repository.name }}"
         with:
           module: github.com/BCIT-LTC/daggerverse/semantic-release
-          call: run --username ${{ github.actor }} --github_token env://GITHUB_TOKEN --source ./ # add arguments as needed
+          call: run --source=. --username=${{ github.actor }} --github_token=env://GITHUB_TOKEN  --registry_path=env://REGISTRY_PATH
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
           version: "latest"
           
