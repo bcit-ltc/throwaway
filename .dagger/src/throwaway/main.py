@@ -1,59 +1,27 @@
 import dagger
-from dagger import dag, function, object_type, Container, DefaultPath
+from dagger import dag, function, object_type, Container, DefaultPath, Directory, Secret, Doc, Enum, EnvVariable, enum_type
 from typing import Annotated
-import asyncio
 
 @object_type
 class Throwaway: # this will be our pipeline-manager module
-    
-    
-    @function
-    async def publish(self) -> None:
-        print("Publishing...")
-        tag = await self.create_tag()
-        container = await self.build_image()
 
-        return await container.publish(
-            f"some_registry/some_repo:{tag}"
+    @function
+    async def run(self,
+                source: Annotated[Directory, Doc("Source directory"), DefaultPath(".")], # source directory
+                github_token: Annotated[Secret, Doc("Github Token")] | None,
+                username: Annotated[str, Doc("Github Username")] | None,  # GitHub username
+                branch: Annotated[str, Doc("Current Branch")] | None,  # Current branch
+                commit_hash: Annotated[str, Doc("Current Commit Hash")] | None,  # Current commit hash
+                ) -> str:
+
+        print(dir(dag.pipeline_manager()))
+
+        
+        return await dag.pipeline_manager().run(
+            source=source,
+            github_token=github_token,
+            username=username,
+            branch=branch,
+            commit_hash=commit_hash
         )
 
-    @function
-    def build_image(self,
-            source: Annotated[
-            dagger.Directory,
-            DefaultPath("./")
-        ],
-        ) -> Container:
-
-        self.run_tests()
-        """Builds the image for the build"""
-        return source.docker_build()
-
-    @function
-    async def run_tests(self) -> None:
-        """Returns a container that echoes whatever string argument is provided"""
-        return None
-
-    @function
-    async def create_tag(self) -> None:
-        """Creates the tag for the build"""
-
-        version_task = self.semantic_release()
-        environment_task = self.determine_environment()
-
-        version, environment = await asyncio.gather(version_task, environment_task)
-
-        some_format_we_agreed_on = f"{version}-{environment}"
-
-        return some_format_we_agreed_on
-
-    
-    @function
-    def semantic_release(self) -> None:
-        """Returns a container that echoes whatever string argument is provided"""
-        return None
-    
-    @function
-    def determine_environment(self) -> None:
-        """Returns a container that echoes whatever string argument is provided"""
-        return None

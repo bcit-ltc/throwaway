@@ -1,14 +1,14 @@
 {
   "name": "throwaway",
-  "engineVersion": "v0.18.1",
+  "engineVersion": "v0.18.4",
   "sdk": {
     "source": "python"
   },
   "dependencies": [
     {
-      "name": "semantic-release",
-      "source": "github.com/BCIT-LTC/daggerverse/semantic-release",
-      "pin": "e5b80437c5d34ee53008fcc47bc11d6968c1d4b5"
+      "name": "pipeline-manager",
+      "source": "github.com/BCIT-LTC/daggerverse/pipeline-manager",
+      "pin": "6de73b299ce3993b64acc900854ef08490213a07"
     }
   ],
   "source": ".dagger"

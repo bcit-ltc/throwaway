@@ -26,10 +26,14 @@ jobs:
         uses: dagger/dagger-for-github@8.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REGISTRY_PATH: "ghcr.io/${{ github.event.repository.name }}"
         with:
-          module: github.com/BCIT-LTC/daggerverse/semantic-release
-          call: run --source=. --username=${{ github.actor }} --github_token=env://GITHUB_TOKEN  --registry_path=env://REGISTRY_PATH
+          # module: github.com/BCIT-LTC/daggerverse/semantic-release
+          # module: github.com/BCIT-LTC/daggerverse/pipeline-manager
+          module: github.com/BCIT-LTC/daggerverse/tree/16-pipeline-manager-part-3/pipeline-manager
+          # call: semanticrelease --username ${{ github.actor }} --github_token env://GITHUB_TOKEN --source ./ 
+          call: run --source=. --username=${{ github.actor }} --github_token=env://GITHUB_TOKEN  --branch=${{ github.ref_name }} --commit_hash=$(echo $GITHUB_SHA | cut -c1-7) --registry_path=ghcr.io/${{ github.event.repository.name }}
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
           version: "latest"
+          
+
           
