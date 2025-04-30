@@ -12,24 +12,22 @@ permissions:
   packages: write # Required for pushing images  
 
 jobs:
-  semantic-release:
-    name: Semantic Release
+  pipeline-manager:
+    name: Pipeline Manager
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Print all ENVS
         run: printenv
-      - name: print commit short SHA
-        run: echo $(echo $GITHUB_SHA | cut -c1-7)
-      - name: Run Dagger for semantic-release development testing
+      - name: Run Dagger for pipeline-manager development testing
         uses: dagger/dagger-for-github@8.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           # module: github.com/BCIT-LTC/daggerverse/semantic-release
-          module: github.com/BCIT-LTC/daggerverse/pipeline-manager
           # call: semanticrelease --username ${{ github.actor }} --github_token env://GITHUB_TOKEN --source ./ 
+          module: github.com/BCIT-LTC/daggerverse/pipeline-manager
           call: run --source=. --username=${{ github.actor }} --github_token=env://GITHUB_TOKEN  --branch=${{ github.ref_name }} --commit_hash=$(echo $GITHUB_SHA | cut -c1-7) --registry_path=ghcr.io/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
           version: "latest"
