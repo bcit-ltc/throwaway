@@ -28,7 +28,7 @@ jobs:
           # module: github.com/BCIT-LTC/daggerverse/semantic-release
           # call: semanticrelease --username ${{ github.actor }} --github_token env://GITHUB_TOKEN --source ./ 
           module: github.com/BCIT-LTC/daggerverse/pipeline-manager
-          call: |
+          call: >-
             run 
             --source=. 
             --username=${{ github.actor }} 
