@@ -7,6 +7,6 @@ on:
 
 jobs:
   call-pipeline-manager:
-    uses: bcit-ltc/.github/.github/workflows/cp-pipeline-ci.yml@main
+    uses: ${{ github.repository_owner }}/.github/.github/workflows/cp-pipeline-ci.yml@main
 
     
