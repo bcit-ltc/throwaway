@@ -29,6 +29,7 @@ jobs:
           call: >-
             run 
             --source=.
+            --username=${{ github.actor }}
             --github_token=env://GITHUB_TOKEN 
             --appname=${{ github.event.repository.name }}
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
