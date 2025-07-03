@@ -29,6 +29,8 @@ jobs:
           call: >-
             run 
             --source=.
+            --github_token=env://GITHUB_TOKEN 
+            --appname=${{ github.repository }}
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
           version: "latest"
           
