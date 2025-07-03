@@ -1,0 +1,37 @@
+name: Not a real CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - "*"
+
+permissions:
+  contents: write # to be able to publish a GitHub release
+  issues: write # to be able to comment on released issues
+  pull-requests: write # to be able to comment on released pull requests
+  packages: write # Required for pushing images  
+
+jobs:
+  pipeline-manager:
+    name: Pipeline Manager
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Print all ENVS
+        run: printenv
+      - name: Run Dagger for pipeline-manager development testing
+        uses: dagger/dagger-for-github@8.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # module: github.com/BCIT-LTC/daggerverse/semantic-release
+          # call: semanticrelease --username ${{ github.actor }} --github_token env://GITHUB_TOKEN --source ./ 
+          module: github.com/BCIT-LTC/daggerverse/helm-oci-release@23-helm-oci-chart-releaser
+          call: >-
+            run 
+            --source=.
+          cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
+          version: "latest"
+          
+
