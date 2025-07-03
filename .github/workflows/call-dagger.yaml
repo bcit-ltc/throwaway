@@ -1,4 +1,4 @@
-name: Not a real CI/CD Pipeline
+name: Call Dagger Helm OCI Release
 
 on:
   push:
@@ -25,8 +25,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          # module: github.com/BCIT-LTC/daggerverse/semantic-release
-          # call: semanticrelease --username ${{ github.actor }} --github_token env://GITHUB_TOKEN --source ./ 
           module: github.com/BCIT-LTC/daggerverse/helm-oci-release@23-helm-oci-chart-releaser
           call: >-
             run 
