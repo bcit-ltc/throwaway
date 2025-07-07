@@ -32,8 +32,8 @@ jobs:
             --username=${{ github.actor }}
             --github_token=env://GITHUB_TOKEN 
             --appname=${{ github.event.repository.name }}
-            --chart_version=1.0.0
-            --app_version=1.0.0
+            --chart_version=1.0.1
+            --app_version=1.0.1
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
           version: "latest"
           
