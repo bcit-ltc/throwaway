@@ -30,6 +30,7 @@ jobs:
             run 
             --source=.
             --username=${{ github.actor }}
+            --organization=${{ github.repository_owner }}
             --github_token=env://GITHUB_TOKEN 
             --appname=${{ github.event.repository.name }}
             --chart_version=1.0.1
