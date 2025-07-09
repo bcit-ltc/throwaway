@@ -33,6 +33,7 @@ jobs:
             --organization=${{ github.repository_owner }}
             --github_token=env://GITHUB_TOKEN 
             --appname=${{ github.event.repository.name }}
+            --helm_directory_path=.
             --chart_version=1.0.1
             --app_version=1.0.1
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
