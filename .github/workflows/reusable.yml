@@ -1,11 +1,11 @@
-name: Not a real CI/CD Pipeline
+# name: Not a real CI/CD Pipeline
 
-on:
-  push:
-    branches:
-      - "*"
+# on:
+#   push:
+#     branches:
+#       - "*"
 
-jobs:
-  call-pipeline-manager:
-    uses: bcit-ltc/.github/.github/workflows/cp-pipeline-ci-reusable.yml@main
+# jobs:
+#   call-pipeline-manager:
+#     uses: bcit-ltc/.github/.github/workflows/cp-pipeline-ci-reusable.yml@main
 
