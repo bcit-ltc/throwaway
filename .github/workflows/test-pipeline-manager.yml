@@ -1,7 +1,9 @@
 name: Pipeline Manager
 
 on:
-  workflow_call:
+  push:
+    branches:
+      - "*"
 
 permissions:
   contents: write # to be able to publish a GitHub release
